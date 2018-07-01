@@ -50,6 +50,21 @@ type CheckResponseTag struct {
 	Count interface{} `json:"count"`
 }
 
+// SummaryResponse
+type SummaryResponse struct {
+	Hours []SummaryResponsePerformance `json:"hours,omitempty"`
+	Days  []SummaryResponsePerformance `json:"days,omitempty"`
+	Weeks []SummaryResponsePerformance `json:"weeks,omitempty"`
+}
+
+type SummaryResponsePerformance struct {
+	StartTime   int64 `json:"starttime"`
+	AvgResponse int   `json:"avgresponse"`
+	Uptime      int   `json:"uptime"`
+	Downtime    int   `json:"downtime"`
+	Unmonitored int   `json:"unmonitored"`
+}
+
 // MaintenanceResponse represents the json response for a maintenance from the Pingdom API
 type MaintenanceResponse struct {
 	ID             int                      `json:"id"`
@@ -168,6 +183,10 @@ type listProbesJsonResponse struct {
 
 type listTeamsJsonResponse struct {
 	Teams []TeamResponse `json:"teams"`
+}
+
+type summaryDetailsJsonResponse struct {
+	Summary *SummaryResponse `json:"summary"`
 }
 
 type checkDetailsJsonResponse struct {
